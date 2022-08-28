@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿namespace MVC_Razor.MVC.Helpers;
 public class ValidAgeAttribute : ValidationAttribute
 {
 	public ValidAgeAttribute() { }

@@ -3,10 +3,15 @@
     ViewData["Title"] = "Customers";
 }
 
-<h2>Customers</h2>
+<div class="row pt-2">
+    <h3 class="text-primary fw-bold col-6">Customers <span class="small">(@Model.Count)</span></h3>
+    <div class=" text-end">
+        <a href="Addemployee" class="btn btn-success mb-4 fw-bold">Add Customer</a>
+    </div>
+</div>
 
 <div class="container-fluid overflow-auto m-0 p-0">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped text-center align-middle">
         <thead class="table-dark">
             <tr>
                 <th>Customer Name</th>
@@ -21,12 +26,20 @@
             @foreach (var customer in Model)
             {
                 <tr>
-                    <td>@customer.Username()</td>
-                    <td>@customer.Email</td>
-                    <td>@customer.Phone</td>
-                    <td>@customer.Birthdate</td>
-                    <td>@customer.Customer_Book.Count</td>
-
+                    <td class="col-2 fw-bold link-primary ">
+                        <a class="text-decoration-none btn-outline-info link-primary" asp-route-id="@customer.Guid" asp-action="">@customer.Username()</a>
+                    </td>
+                    <td class="col-2 ">@customer.Email</td>
+                    <td class="col-2 ">@customer.Phone</td>
+                    <td class="col-1">@customer.Birthdate.ToShortDateString()</td>
+                    <td class="col-1 "><a asp-action="CustomerBorrowedBooks" class="btn btn-primary btn-outline-info rounded-3 text-white">
+                        @customer.Customer_Book.Count</a></td>
+                    <td class="col-1">
+                        <div>
+                            <a href="@($"/UpdateEmployee/{customer.Guid}")" class="btn btn-warning p-1 mb-1">Update</a>
+                            <a href="@($"/DeleteEmployee/{customer.Guid}")" class="btn btn-danger p-1 mt-1">Delete</a>
+                        </div>
+                    </td>
                 </tr>
             }
         </tbody>

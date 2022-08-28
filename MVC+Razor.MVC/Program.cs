@@ -1,7 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using MVC_Razor.MVC.DataAccess.Data;
-using MVC_Razor.MVC.DataAccess.Repositories;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();

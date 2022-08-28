@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MVC_Razor.MVC.Models;
-
-namespace MVC_Razor.MVC.DataAccess.Data;
+﻿namespace MVC_Razor.MVC.DataAccess.Data;
 
 
 public class MVCwithRazorDbContext : DbContext

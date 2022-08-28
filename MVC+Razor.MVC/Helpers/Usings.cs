@@ -8,4 +8,11 @@ global using System.Threading.Tasks;
 global using System.Collections.Generic;
 global using System.ComponentModel.DataAnnotations;
 
+global using MVC_Razor.MVC.Models;
+global using MVC_Razor.MVC.Helpers;
+global using Microsoft.AspNetCore.Mvc;
+global using MVC_Razor.MVC.DataAccess.Data;
+global using Microsoft.EntityFrameworkCore;
+global using MVC_Razor.MVC.DataAccess.Repositories;
+
 
