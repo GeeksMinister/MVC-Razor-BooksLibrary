@@ -1,4 +1,5 @@
-﻿@model List<Customer>
+﻿@inject ICustomerRepository customerData
+@model List<Customer>
 @{
     ViewData["Title"] = "Customers";
 }
@@ -27,17 +28,21 @@
             {
                 <tr>
                     <td class="col-2 fw-bold link-primary ">
-                        <a class="text-decoration-none btn-outline-info link-primary" asp-route-id="@customer.Guid" asp-action="">@customer.Username()</a>
+                        <a class="text-decoration-none btn-outline-info link-primary rounded-pill p-1"
+                           asp-action="CustomerDetails" asp-route-Id="@customer.Guid">@customer.Username()</a>
                     </td>
                     <td class="col-2 ">@customer.Email</td>
                     <td class="col-2 ">@customer.Phone</td>
                     <td class="col-1">@customer.Birthdate.ToShortDateString()</td>
-                    <td class="col-1 "><a asp-action="CustomerBorrowedBooks" class="btn btn-primary btn-outline-info rounded-3 text-white">
-                        @customer.Customer_Book.Count</a></td>
+                    <td class="col-1 ">
+                        <a class="btn btn-primary btn-outline-info rounded-3 text-white"
+                            asp-action="CustomerBorrowedBooks"> @await customerData.GetBorrowedCount(customer.Guid)
+                        </a>
+                    </td>
                     <td class="col-1">
                         <div>
-                            <a href="@($"/UpdateEmployee/{customer.Guid}")" class="btn btn-warning p-1 mb-1">Update</a>
-                            <a href="@($"/DeleteEmployee/{customer.Guid}")" class="btn btn-danger p-1 mt-1">Delete</a>
+                            <a href="@($"/UpdateEmployee/{customer.Guid}")" class="btn btn-warning p-1 mt-1 mb-1">Update</a>
+                            <a href="@($"/DeleteEmployee/{customer.Guid}")" class="btn btn-danger p-1">Delete</a>
                         </div>
                     </td>
                 </tr>

@@ -16,14 +16,30 @@ public class CustomerRepository : ICustomerRepository
 
 	public async Task<List<Customer>> GetAllCustomers()
 	{
-		var result = await _dbContext.Customer!.Include(customer => customer.Customer_Book).ToListAsync();
+		var result = await _dbContext.Customer!.ToListAsync();
 		return result;
 	}
 
+	public async Task<Customer?> GetCustomerById(Guid customerId)
+	{
+		var result = await _dbContext.Customer!.FirstOrDefaultAsync(c => c.Guid.ToString() == customerId.ToString());
+		return result;
+	}
 	public async Task<List<Book>> GetBorrowedBooks(Guid customerId)
 	{
 		var result = await _dbContext.Book!.Include(book => book.Customer_Book).ThenInclude(
 			customer_book => customer_book.Customer).Where(customer => customer.Guid == customerId).ToListAsync();
 		return result;
 	}
+
+    public async Task<int> GetBorrowedCount(Guid customerId)
+	{
+		var result = await _dbContext.Customer_book!.Where(
+			c_b => c_b.CustomerId.ToString() == customerId.ToString()).CountAsync();
+		return result;
+	}
+
+
+
+
 }

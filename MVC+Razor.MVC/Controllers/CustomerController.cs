@@ -14,6 +14,13 @@ public class CustomerController : Controller
         return View(result);
     }
 
+    public async Task<IActionResult> CustomerDetails(Guid id)
+    {
+        var result = await _repository.GetCustomerById(id);
+        return View(result);
+    }
+
+
     public async Task<IActionResult> CustomerBorrowedBooks(Guid guid)
     {
         var result = await _repository.GetBorrowedBooks(guid);
