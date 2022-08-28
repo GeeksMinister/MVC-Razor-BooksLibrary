@@ -1,0 +1,35 @@
+﻿@model List<Customer>
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<h2>Customers</h2>
+
+<div class="container-fluid overflow-auto m-0 p-0">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Birthdate</th>
+                <th>Borrowed</th>
+                <th>Changes</th>
+            </tr>
+        </thead>
+        <tbody class="border-1 border-dark">
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.Username()</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.Phone</td>
+                    <td>@customer.Birthdate</td>
+                    <td>@customer.Customer_Book.Count</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
