@@ -1,4 +1,6 @@
-﻿namespace MVC_Razor.MVC.Controllers;
+﻿using MVC_Razor.MVC.DataAccess.Repositories.CustomerRepository;
+
+namespace MVC_Razor.MVC.Controllers;
 public class CustomerController : Controller
 {
     private readonly ICustomerRepository _repository;
@@ -21,9 +23,4 @@ public class CustomerController : Controller
     }
 
 
-    public async Task<IActionResult> CustomerBorrowedBooks(Guid guid)
-    {
-        var result = await _repository.GetBorrowedBooks(guid);
-        return View(result);
-    }
 }

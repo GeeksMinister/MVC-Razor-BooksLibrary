@@ -48,7 +48,7 @@ else
                     <th class="table-dark">Borrowed Books</th>
                     <td>
                         <a class="btn btn-primary btn-outline-info rounded-3 text-white"
-                           asp-controller="Customer" asp-action="CustomerBorrowedBooks">
+                           asp-controller="Book" asp-action="GetBorrowedBooks" asp-route-Id="@Model.Guid">
                             @await customerData.GetBorrowedCount(Model.Guid)
                         </a>
                     </td>

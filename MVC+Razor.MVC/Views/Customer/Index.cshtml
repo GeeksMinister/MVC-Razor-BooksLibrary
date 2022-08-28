@@ -5,49 +5,61 @@
 }
 
 <div class="row pt-2">
-    <h3 class="text-primary fw-bold col-6">Customers <span class="small">(@Model.Count)</span></h3>
+    <h3 class="text-secondary font-monospace fw-bold col-6">Customers (<span class="text-primary opacity-75 small">@Model?.Count</span>)</h3>
     <div class=" text-end">
         <a href="Addemployee" class="btn btn-success mb-4 fw-bold">Add Customer</a>
     </div>
 </div>
 
-<div class="container-fluid overflow-auto m-0 p-0">
-    <table class="table table-bordered table-striped text-center align-middle">
-        <thead class="table-dark">
-            <tr>
-                <th>Customer Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Birthdate</th>
-                <th>Borrowed</th>
-                <th>Changes</th>
-            </tr>
-        </thead>
-        <tbody class="border-1 border-dark">
-            @foreach (var customer in Model)
-            {
+@if (Model is null)
+{
+    <em>Loading ......</em>
+}
+else if (Model.Any() is false)
+{
+    <h4>No Registered Customer Was Returned From the Database</h4>
+}
+else
+{
+    <div class="container-fluid overflow-auto m-0 p-0">
+        <table class="table table-bordered table-striped text-center align-middle">
+            <thead class="table-dark">
                 <tr>
-                    <td class="col-2 fw-bold link-primary ">
-                        <a class="text-decoration-none btn-outline-info link-primary rounded-pill p-1"
-                           asp-action="CustomerDetails" asp-route-Id="@customer.Guid">@customer.Username()</a>
-                    </td>
-                    <td class="col-2 ">@customer.Email</td>
-                    <td class="col-2 ">@customer.Phone</td>
-                    <td class="col-1">@customer.Birthdate.ToShortDateString()</td>
-                    <td class="col-1 ">
-                        <a class="btn btn-primary btn-outline-info rounded-3 text-white"
-                            asp-action="CustomerBorrowedBooks"> @await customerData.GetBorrowedCount(customer.Guid)
-                        </a>
-                    </td>
-                    <td class="col-1">
-                        <div>
-                            <a href="@($"/UpdateEmployee/{customer.Guid}")" class="btn btn-warning p-1 mt-1 mb-1">Update</a>
-                            <a href="@($"/DeleteEmployee/{customer.Guid}")" class="btn btn-danger p-1">Delete</a>
-                        </div>
-                    </td>
+                    <th>Customer Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Birthdate</th>
+                    <th>Borrowed</th>
+                    <th>Changes</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="border-1 border-dark">
+                @foreach (var customer in Model)
+                {
+                    <tr>
+                        <td class="col-2 fw-bold link-primary ">
+                            <a class="text-decoration-none btn-outline-info link-primary rounded-pill p-1"
+                               asp-action="CustomerDetails" asp-route-Id="@customer.Guid">@customer.Username()</a>
+                        </td>
+                        <td class="col-2 ">@customer.Email</td>
+                        <td class="col-2 ">@customer.Phone</td>
+                        <td class="col-1">@customer.Birthdate.ToShortDateString()</td>
+                        <td class="col-1 ">
+                            <a class="btn btn-primary btn-outline-info rounded-3 text-white"
+                               asp-controller="Book" asp-action="GetBorrowedBooks" asp-route-Id="@customer.Guid">
+                                @await customerData.GetBorrowedCount(customer.Guid)
+                            </a>
+                        </td>
+                        <td class="col-1">
+                            <div>
+                                <a href="@($"/UpdateEmployee/{customer.Guid}")" class="btn btn-warning p-1 mt-1 mb-1">Update</a>
+                                <a href="@($"/DeleteEmployee/{customer.Guid}")" class="btn btn-danger p-1">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
-</div>
+    </div>
+}

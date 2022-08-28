@@ -13,6 +13,7 @@ global using MVC_Razor.MVC.Helpers;
 global using Microsoft.AspNetCore.Mvc;
 global using MVC_Razor.MVC.DataAccess.Data;
 global using Microsoft.EntityFrameworkCore;
-global using MVC_Razor.MVC.DataAccess.Repositories;
+global using MVC_Razor.MVC.DataAccess.Repositories.BookRepository;
+global using MVC_Razor.MVC.DataAccess.Repositories.CustomerRepository;
 
 

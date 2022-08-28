@@ -1,3 +1,6 @@
+using MVC_Razor.MVC.DataAccess.Repositories.BookRepository;
+using MVC_Razor.MVC.DataAccess.Repositories.CustomerRepository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
@@ -6,6 +9,7 @@ builder.Services.AddDbContextPool<MVCwithRazorDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("Default")));
 
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 var app = builder.Build();
 
