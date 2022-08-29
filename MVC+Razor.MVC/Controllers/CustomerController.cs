@@ -31,12 +31,46 @@ public class CustomerController : Controller
     [HttpPost]
     public async Task<IActionResult> AddCustomer(CustomerDto customerDto)
     {
-        if (ModelState.IsValid)
-        {
-            var customer = _mapper.Map<Customer>(customerDto);
-            await _repository.InsertCustomer(customer);
-            return RedirectToAction(nameof(Index));
-        }
+        if (ModelState.IsValid == false) return View(customerDto);
+
+        Customer customer = _mapper.Map<Customer>(customerDto);
+        await _repository.InsertCustomer(customer);
+        return RedirectToAction(nameof(Index));
+    }
+
+    public async Task<IActionResult> UpdateCustomer(Guid id)
+    {
+        Customer? customer = await _repository.GetCustomerById(id);
+        if (customer == null) return NotFound();
+        CustomerDto customerDto = _mapper.Map<CustomerDto>(customer);
+        customerDto.Id = customer.Guid.ToString();
         return View(customerDto);
-    } 
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateCustomer(CustomerDto customerDto, Guid id)
+    {
+        if (ModelState.IsValid == false) return View(customerDto);
+
+        Customer? customer = await _repository.GetCustomerById(id);
+        if (customer == null) return NotFound();
+        customer = _mapper.Map<Customer>(customerDto);
+        customer.Guid = id;
+        await _repository.UpdateCustomer(customer);
+        return RedirectToAction(nameof(Index));
+    }
+
+    public async Task<IActionResult> DeleteCustomer(Guid id)
+    {
+        Customer? customer = await _repository.GetCustomerById(id);
+        if (customer == null) return NotFound();
+        return View(customer);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteCustomer_Post(Guid id)
+    {
+        await _repository.DeleteCustomer(id);
+        return RedirectToAction(nameof(Index));
+    }
 }

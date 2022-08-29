@@ -1,12 +1,16 @@
 ﻿@model CustomerDto
 
 @{
-    ViewData["Title"] = "New Customer";
+    ViewData["Title"] = "Update Customer";
 }
+<h2 class="text-primary m-4 text-warning">Update Customer</h2>
 
-<h2 class="text-primary m-4 text-success">Add Customer</h2>
+<div class="col-s-auto col-lg-4 mb-1 mt-5  fw-bold small text-primary">
+    <label asp-for="Id">Customer Id</label>
+    <input asp-for="Id" class="form-control fw-bold" disabled />
+</div>
 
-<form method="post" asp-action="AddCustomer" class="mt-5">
+<form method="post" asp-action="UpdateCustomer" class="mt-2">
     <div class="row card card-body bg-light shadow-lg">
         <div class="row w-100 mb-4">
             <div class="col-s-auto col-lg-4 mb-3">
@@ -23,7 +27,7 @@
 
             <div class="col-s-auto col-lg-4 mb-3">
                 <label asp-for="Birthdate" class=""></label>
-                <input asp-for="Birthdate" type="date" class="form-control"/>
+                <input asp-for="Birthdate" type="date" class="form-control" />
                 <span asp-validation-for="Birthdate" class="text-danger"></span>
             </div>
         </div>
@@ -43,7 +47,7 @@
         </div>
 
         <div class="w-75 m-5 text-center row">
-            <button type="submit" class="btn btn-success fw-bold m-2 col-sm-auto col-lg-3">Add Employee</button>
+            <button type="submit" asp-route-Id="@Model.Id" class="btn btn-warning fw-bold m-2 col-sm-auto col-lg-3">Update Employee</button>
             <button type="reset" class="btn btn-secondary  m-2 col-sm-auto col-lg-3">Reset</button>
             <a asp-action="Index" class="btn btn-primary m-2 col-sm-auto col-lg-3">Cancel</a>
         </div>

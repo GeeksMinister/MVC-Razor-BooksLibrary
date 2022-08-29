@@ -2,6 +2,8 @@
 
 public class CustomerDto
 {
+    public string Id { get; set; } = string.Empty;
+
     [Required]
     [DisplayName("First Name")]
     [StringLength(50, ErrorMessage = "Name is too big. 100 characters Max!")]

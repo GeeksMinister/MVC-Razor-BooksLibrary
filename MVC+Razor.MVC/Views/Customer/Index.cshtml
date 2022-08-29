@@ -52,8 +52,8 @@ else
                         </td>
                         <td class="col-1">
                             <div>
-                                <a href="@($"/UpdateEmployee/{customer.Guid}")" class="btn btn-warning p-1 mt-1 mb-1">Update</a>
-                                <a href="@($"/DeleteEmployee/{customer.Guid}")" class="btn btn-danger p-1">Delete</a>
+                                <a asp-action="UpdateCustomer" asp-route-Id="@customer.Guid" class="btn btn-warning p-1 mt-1 mb-1">Update</a>
+                                <a asp-action="DeleteCustomer" asp-route-Id="@customer.Guid" class="btn btn-danger p-1">Delete</a>
                             </div>
                         </td>
                     </tr>

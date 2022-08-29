@@ -6,4 +6,6 @@ public interface ICustomerRepository
     Task<List<Customer>> GetAllCustomers();
     Task<int> GetBorrowedCount(Guid customerId);
     Task<Customer?> GetCustomerById(Guid customerId);
+    Task UpdateCustomer(Customer updated);
+    Task DeleteCustomer(Guid customerId);
 }

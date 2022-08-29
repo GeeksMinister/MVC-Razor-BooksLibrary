@@ -17,14 +17,15 @@ public class CustomerRepository : ICustomerRepository
 
     public async Task<Customer?> GetCustomerById(Guid customerId)
     {
-        var result = await _dbContext.Customer!.FirstOrDefaultAsync(c => c.Guid.ToString() == customerId.ToString());
+        var result = await _dbContext.Customer!.FirstOrDefaultAsync(
+            c => c.Guid.ToString().ToUpper() == customerId.ToString().ToUpper());
         return result;
     }
 
     public async Task<int> GetBorrowedCount(Guid customerId)
     {
         var result = await _dbContext.Customer_book!.Where(
-            c_b => c_b.CustomerId.ToString() == customerId.ToString()).CountAsync();
+            customer_book => customer_book.CustomerId.ToString() == customerId.ToString()).CountAsync();
         return result;
     }
 
@@ -34,5 +35,27 @@ public class CustomerRepository : ICustomerRepository
         await _dbContext.SaveChangesAsync();
     }
 
+    public async Task UpdateCustomer(Customer updated)
+    {
+        var customer = await _dbContext.Customer!.FirstOrDefaultAsync(
+            c => c.Guid.ToString().ToUpper() == updated.Guid.ToString().ToUpper());
+        if (customer == null) return;
+        customer.FirstName = updated.FirstName;
+        customer.LastName = updated.LastName;
+        customer.Birthdate = updated.Birthdate;
+        customer.Email = updated.Email;
+        customer.Phone = updated.Phone;
+
+        await _dbContext.SaveChangesAsync();
+    }
+
+    public async Task DeleteCustomer(Guid customerId)
+    {
+        var customer = await _dbContext.Customer!.FirstOrDefaultAsync(
+        c => c.Guid.ToString().ToUpper() == customerId.ToString().ToUpper());
+        if (customer == null) return;
+        _dbContext.Customer!.Remove(customer);
+        await _dbContext.SaveChangesAsync();
+    }
 
 }
