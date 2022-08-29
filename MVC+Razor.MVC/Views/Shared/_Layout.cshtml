@@ -13,7 +13,8 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid p-3 m-0">
                 <a class="navbar-brand fw-bold m-auto" asp-controller="Customer" asp-action="Index">
-                    <pre class="h1 text-white bg-dark rounded-pill bg-opacity-100 p-2 ">  Books Library  </pre></a>
+                    <pre class="h1 text-white bg-dark rounded-pill bg-opacity-100 p-2 ">  Books Library  </pre>
+                </a>
             </div>
         </nav>
     </header>
@@ -22,12 +23,14 @@
             @RenderBody()
         </main>
     </div>
+    <div style="bottom:0; position: absolute; height:auto; width:100%; ">
+        <footer class="border-top footer text-muted fw-bold p-4">
+            <div class="container">
+                &copy; 2022 - MVC_Razor.MVC By Nael
+            </div>
+        </footer>
+    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - MVC_Razor.MVC
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

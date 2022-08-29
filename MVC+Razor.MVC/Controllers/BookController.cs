@@ -1,4 +1,5 @@
 ﻿namespace MVC_Razor.MVC.Controllers;
+
 public class BookController : Controller
 {
     private readonly IBookRepository _repository;

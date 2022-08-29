@@ -1,4 +1,5 @@
 ﻿namespace MVC_Razor.MVC.DataAccess.Repositories.BookRepository;
+
 public class BookRepository : IBookRepository
 {
     private readonly MVCwithRazorDbContext _dbContext;

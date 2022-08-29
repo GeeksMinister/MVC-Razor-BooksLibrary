@@ -1,6 +1,5 @@
 ﻿namespace MVC_Razor.MVC.DataAccess.Data;
 
-
 public class MVCwithRazorDbContext : DbContext
 {
 	public MVCwithRazorDbContext(DbContextOptions<MVCwithRazorDbContext> options)

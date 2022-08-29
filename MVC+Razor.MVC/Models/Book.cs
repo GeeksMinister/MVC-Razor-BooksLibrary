@@ -1,6 +1,5 @@
 ﻿namespace MVC_Razor.MVC.Models;
 
-
 public class Book
 {
     [Key]

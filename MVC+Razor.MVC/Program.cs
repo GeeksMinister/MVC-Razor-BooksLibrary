@@ -1,5 +1,6 @@
 using MVC_Razor.MVC.DataAccess.Repositories.BookRepository;
 using MVC_Razor.MVC.DataAccess.Repositories.CustomerRepository;
+using MVC_Razor.MVC.Helpers.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddDbContextPool<MVCwithRazorDbContext>(options =>
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 
+builder.Services.AddAutoMapper(typeof(MapperInitializer));
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())

@@ -1,6 +1,5 @@
 ﻿namespace MVC_Razor.MVC.DataAccess.Repositories.CustomerRepository;
 
-
 public class CustomerRepository : ICustomerRepository
 {
     private readonly MVCwithRazorDbContext _dbContext;
@@ -29,7 +28,11 @@ public class CustomerRepository : ICustomerRepository
         return result;
     }
 
-
+    public async Task InsertCustomer(Customer customer)
+    {
+        await _dbContext.AddAsync(customer);
+        await _dbContext.SaveChangesAsync();
+    }
 
 
 }

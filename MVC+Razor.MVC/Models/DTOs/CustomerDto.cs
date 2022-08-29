@@ -1,12 +1,7 @@
-﻿namespace MVC_Razor.MVC.Models;
+﻿namespace MVC_Razor.MVC.Models.DTOs;
 
-
-public class Customer
+public class CustomerDto
 {
-    [Key]
-    [StringLength(36)]
-    public Guid Guid { get; set; } = Guid.NewGuid();
-
     [Required]
     [DisplayName("First Name")]
     [StringLength(50, ErrorMessage = "Name is too big. 100 characters Max!")]
@@ -31,12 +26,9 @@ public class Customer
     [StringLength(300, ErrorMessage = "Email is too big. 300 characters Max!")]
     public string Email { get; set; } = string.Empty;
 
-    public List<Customer_Book> Customer_Book { get; set; } = new List<Customer_Book>();
-
-
     public string Username() => FirstName + " " + LastName;
 
-    public Customer()
+    public CustomerDto()
     {
 
     }

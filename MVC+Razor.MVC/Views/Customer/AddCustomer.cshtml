@@ -1,0 +1,59 @@
+﻿@model CustomerDto
+
+@{
+    ViewData["Title"] = "New Customer";
+}
+
+<h2 class="text-primary m-4">Add Customer</h2>
+
+<form method="post" asp-action="AddCustomer" class="mt-5">
+    <div class="row card card-body bg-light shadow-lg">
+        @*<input asp-for="Guid" value="@Guid.NewGuid()" class="invisible"/>*@
+        <div class="row w-100 mb-4">
+            <div class="col-s-auto col-lg-4 mb-3">
+                <label asp-for="FirstName">First Name</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class=" col-s-auto col-lg-4 mb-3">
+                <label asp-for="LastName">Last Name</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="col-s-auto col-lg-4 mb-3">
+                <label asp-for="Birthdate" class=""></label>
+                <input asp-for="Birthdate" type="date" class="form-control"/>
+                <span asp-validation-for="Birthdate" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row w-100 mb-5">
+            <div class="col-s-auto col-lg-4 mb-2">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class=" col-s-auto col-lg-4 mb-2">
+                <label asp-for="Phone">Phone</label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="w-75 m-5 text-center row">
+            <button type="submit" class="btn btn-success fw-bold m-2 col-sm-auto col-lg-3">Add Employee</button>
+            <button type="reset" class="btn btn-secondary  m-2 col-sm-auto col-lg-3">Reset</button>
+            <a asp-action="Index" class="btn btn-primary m-2 col-sm-auto col-lg-3">Cancel</a>
+        </div>
+    </div>
+</form>
+
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

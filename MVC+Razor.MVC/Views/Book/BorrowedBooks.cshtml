@@ -3,12 +3,11 @@
     ViewData["Title"] = "Borrowed Books";
 }
 
-<div class="row pt-2">
-    <h3 class="text-primary fw-bold col-6">Borrowed Books <span class="small">(@Model?.Count)</span></h3>
-    <div class=" text-end">
-        <a href="Addemployee" class="btn btn-success mb-4 px-4 py-2 fw-bold">Add</a>
-    </div>
+<br />
+<div class="text-center m-4">
+    <h3 class="text-dark font-monospace fw-bold ">Borrowed Books (<span class="small text-primary">@Model?.Count</span>)</h3>
 </div>
+<br />
 
 @if (Model is null)
 {
@@ -28,14 +27,13 @@ else
                     <th>Author</th>
                     <th>ISBN</th>
                     <th>Returned</th>
-                    <th class="bg-dark"></th>
                 </tr>
             </thead>
             <tbody class="border-1 border-dark">
                 @foreach (var book in Model)
                 {
                     <tr>
-                        <td class="col-3 fw-bold link-primary ">@book.Title</td>
+                        <td class="col-3 ">@book.Title</td>
                         <td class="col-2 ">@book.Author</td>
                         <td class="col-1 ">@book.ISBN</td>
                         @if (book.Available)
@@ -46,12 +44,6 @@ else
                         {
                             <td class="col-1 bg-warning bg-opacity-50">NO</td>
                         }
-                        <td class="col-1">
-                            <div>
-                                <a href="@($"/UpdateEmployee/{book.Guid}")" class="btn btn-warning p-1 mt-1 mb-1">Update</a>
-                                <a href="@($"/DeleteEmployee/{book.Guid}")" class="btn btn-danger p-1">Delete</a>
-                            </div>
-                        </td>
                     </tr>
                 }
             </tbody>
@@ -59,3 +51,9 @@ else
 
     </div>
 }
+
+<br />
+<br />
+<div class="m-2">
+    <a class="btn btn-primary m-3" asp-controller="Customer" asp-action="Index" style="width:100px">Back</a>
+</div>
