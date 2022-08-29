@@ -10,9 +10,9 @@
 }
 else
 {
-    <div class="d-flex" style="height: 50vh">
+    <div class="d-flex overflow-auto" style="height: 50vh">
         <table class="table table-striped table-details ">
-            <tbody class="border-2 border-secondary fw-bold text-center align-middle h6">
+            <tbody class="border-2 border-secondary fw-bold text-center align-middle h5">
 
                 <tr class="border-2">
                     <th class="table-dark">Id</th>
@@ -58,9 +58,9 @@ else
         </table>
     </div>
     <div class="row-cols-6 m-5 text-center">
-        <a href="" class="btn btn-warning p-2 m-3">Update</a>
-        <a href="" class="btn btn-danger p-2 m-3">Delete</a>
-        <a asp-controller="Customer" asp-action="Index" class="btn btn-primary p-2 m-3">Back</a>
+        <a asp-action="UpdateCustomer" asp-route-Id="@Model.Guid" class="btn btn-warning p-2 m-3 fw-bold">Update</a>
+        <a asp-action="DeleteCustomer" asp-route-Id="@Model.Guid" class="btn btn-danger p-2 m-3 fw-bold">Delete</a>
+        <a asp-action="Index" class="btn btn-primary p-2 m-3">Back</a>
     </div>
 
 }

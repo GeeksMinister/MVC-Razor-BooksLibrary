@@ -10,7 +10,7 @@
     <input asp-for="Guid" class="form-control fw-bold" disabled />
 </div>
 
-<form method="post" asp-action="DeleteCustomer_Post" asp-route-Id="@Model.Guid" class="mt-2">
+<form method="post" asp-action="DeleteCustomer_Post" asp-route-Id="@Model.Guid" class="mt-2 fw-bold">
     <div class="row card card-body bg-light shadow-lg">
         <div class="row w-100 mb-4">
             <div class="col-s-auto col-lg-4 mb-3">
@@ -42,7 +42,7 @@
         </div>
 
         <div class="w-75 m-5 text-center row">
-            <input type="submit" class="btn btn-danger fw-bold m-2 col-sm-auto col-lg-3" value="Delete Employee" />
+            <input type="submit" class="btn btn-danger fw-bold m-2 col-sm-auto col-lg-3" value="Delete Customer" />
             <a asp-action="Index" class="btn btn-primary m-2 col-sm-auto col-lg-3">Cancel</a>
         </div>
     </div>
