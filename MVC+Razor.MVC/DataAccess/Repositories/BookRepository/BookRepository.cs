@@ -12,7 +12,7 @@ public class BookRepository : IBookRepository
     public async Task<List<Book>> GetBorrowedBooks(Guid customerId)
     {
         var result = await (from customer_book in _dbContext.Customer_book
-                            where customer_book.CustomerId.ToString() == customerId.ToString()
+                            where customer_book.CustomerId.Equals(customerId)
                             select customer_book.Book).ToListAsync();
         return result;
     }

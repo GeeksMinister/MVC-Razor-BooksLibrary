@@ -75,7 +75,7 @@ namespace MVC_Razor.MVC.Migrations
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasMaxLength(50)
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Guid");
