@@ -1,6 +1,5 @@
 ﻿namespace MVC_Razor.MVC.Models;
 
-
 public class Customer
 {
     [Key]
@@ -9,12 +8,12 @@ public class Customer
 
     [Required]
     [DisplayName("First Name")]
-    [StringLength(50, ErrorMessage = "Name is too big. 100 characters Max!")]
+    [StringLength(50, MinimumLength = 3, ErrorMessage = "First Name should be between 3 - 50 characters")]
     public string FirstName { get; set; } = string.Empty;
 
     [Required]
     [DisplayName("Last Name")]
-    [StringLength(50, ErrorMessage = "Name is too big. 100 characters Max!")]
+    [StringLength(50, MinimumLength = 3, ErrorMessage = "Last Name should be between 3 - 50 characters")]
     public string LastName { get; set; } = string.Empty;
 
     [DisplayName("Date of Birth")]
