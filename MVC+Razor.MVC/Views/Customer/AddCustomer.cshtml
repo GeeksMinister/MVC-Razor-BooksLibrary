@@ -7,7 +7,7 @@
 <h2 class="text-primary m-4 text-success">Add Customer</h2>
 
 <form method="post" asp-action="AddCustomer" class="mt-5 fw-bold">
-    <div class="row card card-body bg-light shadow-lg">
+    <div class="row card card-body bg-light shadow-lg pb-3">
         <div class="row w-100 mb-4">
             <div class="col-s-auto col-lg-4 mb-3">
                 <label asp-for="FirstName">First Name</label>
@@ -42,10 +42,10 @@
             </div>
         </div>
 
-        <div class="w-75 m-5 text-center row">
-            <button type="submit" class="btn btn-success fw-bold m-2 col-sm-auto col-lg-3">Add Customer</button>
-            <button type="reset" class="btn btn-secondary  m-2 col-sm-auto col-lg-3">Reset</button>
-            <a asp-action="Index" class="btn btn-primary m-2 col-sm-auto col-lg-3">Cancel</a>
+        <div class="w-100 mt-5 mb-5  text-center row justify-content-center justify-content-evenly">
+            <button type="submit" class="btn btn-success fw-bold m-2 col-sm-auto col-md-3 col-lg-3 col-xl-2">Add Customer</button>
+            <button type="reset" class="btn btn-secondary  m-2 col-sm-auto col-md-3 col-lg-3 col-xl-2">Reset</button>
+            <a asp-action="Index" class="btn btn-primary m-2 col-sm-auto col-md-3 col-lg-3 col-xl-2">Cancel</a>
         </div>
     </div>
 </form>
