@@ -2,21 +2,26 @@
 
 public class MVCwithRazorDbContext : DbContext
 {
-	public MVCwithRazorDbContext(DbContextOptions<MVCwithRazorDbContext> options)
-		: base(options) { }
-	
+	private readonly IConfiguration _config;
+
+	public MVCwithRazorDbContext(DbContextOptions<MVCwithRazorDbContext> options, IConfiguration config)
+		: base(options)
+	{
+		_config = config;
+	}
+
 
 	public DbSet<Customer>? Customer { get; set; }
 	public DbSet<Customer_Book>? Customer_book { get; set; }
 	public DbSet<Book>? Book { get; set; }
 
-	//protected override void OnConfiguring(DbContextOptionsBuilder options)
-	//{
-	//	if (options.IsConfigured == false)
-	//	{
-	//		options.UseSqlite("Data Source=MVC&RazorDb.db");
-	//	}
-	//}
+	protected override void OnConfiguring(DbContextOptionsBuilder options)
+	{
+		if (options.IsConfigured == false)
+		{
+			options.UseSqlite(_config.GetConnectionString("Default"));
+		}
+	}
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		modelBuilder.Entity<Customer_Book>()

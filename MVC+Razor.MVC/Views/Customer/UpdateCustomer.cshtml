@@ -5,7 +5,7 @@
 }
 <h2 class="text-primary m-4 text-warning">Update Customer</h2>
 
-<div class="col-s-auto col-lg-4 mb-1 mt-5  fw-bold small text-primary">
+<div class="col-md-6 col-lg-4 mb-1 mt-5  fw-bold small text-primary">
     <label asp-for="Id">Customer Id</label>
     <input asp-for="Id" class="form-control fw-bold" disabled />
 </div>
@@ -13,19 +13,19 @@
 <form method="post" asp-action="UpdateCustomer" class="mt-2 fw-bold">
     <div class="row card card-body bg-light shadow-lg">
         <div class="row w-100 mb-4">
-            <div class="col-s-auto col-lg-4 mb-3">
+            <div class="col-md-6 col-lg-4 mb-3">
                 <label asp-for="FirstName">First Name</label>
                 <input asp-for="FirstName" class="form-control" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
 
-            <div class=" col-s-auto col-lg-4 mb-3">
+            <div class="col-md-6 col-lg-4 mb-3">
                 <label asp-for="LastName">Last Name</label>
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
 
-            <div class="col-s-auto col-lg-4 mb-3">
+            <div class="col-md-6 col-lg-4 mb-3">
                 <label asp-for="Birthdate" class=""></label>
                 <input asp-for="Birthdate" type="date" class="form-control" />
                 <span asp-validation-for="Birthdate" class="text-danger"></span>
@@ -33,24 +33,24 @@
         </div>
 
         <div class="row w-100 mb-5">
-            <div class="col-s-auto col-lg-4 mb-2">
+            <div class="col-md-6 col-lg-4 mb-2">
                 <label asp-for="Email">Email</label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
 
-            <div class=" col-s-auto col-lg-4 mb-2">
+            <div class=" col-md-6 col-lg-4 mb-2">
                 <label asp-for="Phone">Phone</label>
                 <input asp-for="Phone" class="form-control" />
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
         </div>
 
-        <div class="w-100 mt-5 mb-5  text-center row justify-content-center justify-content-evenly">
+        <div class="w-100 mt-5 mb-5 text-center align-middle row justify-content-evenly gy-3">
             <button type="submit" asp-route-Id="@Model.Id" 
-                    class="btn btn-warning fw-bold m-2 m-2 col-sm-auto col-md-3 col-lg-3 col-xl-2">Update Customer</button>
-            <button type="reset" class="btn btn-secondary  m-2 m-2 col-sm-auto col-md-3 col-lg-3 col-xl-2">Reset</button>
-            <a asp-action="Index" class="btn btn-primary m-2 m-2 col-sm-auto col-md-3 col-lg-3 col-xl-2">Cancel</a>
+                    class="btn btn-warning fw-bold col-sm-3 col-md-3 col-lg-3 col-xl-2">Update Customer</button>
+            <button type="reset" class="btn btn-secondary  col-sm-3 col-md-3 col-lg-3 col-xl-2">Reset</button>
+            <a asp-action="Index" class="btn btn-primary col-sm-3 col-md-3 col-lg-3 col-xl-2">Cancel</a>
         </div>
     </div>
 </form>
